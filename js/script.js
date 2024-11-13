@@ -64,11 +64,20 @@ const confirmVerificationBtn = document.getElementById('confirmVerificationBtn')
 confirmVerificationBtn.addEventListener('click', () => {
     const verificationCode = document.getElementById('verificationCode').value;
     if (verificationCode) {
-        // Simulate successful verification
+        // Validate the code (for now, you can simulate successful verification)
         alert('Account verified successfully!');
         verificationModal.style.display = 'none'; // Close verification modal
     } else {
         alert('Please enter the verification code.');
     }
 });
+
+// Handle the sign-in form submission
+const signInForm = document.querySelector('#signInModal form');
+signInForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    alert('Sign In form submitted');
+    signInModal.style.display = 'none'; // Close modal after submit
+});
+
 
