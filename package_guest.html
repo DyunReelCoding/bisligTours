@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bislig Tours</title>
+    <link rel="stylesheet" href="css/package.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="package-image/logos.png" alt="Bislig Tours Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_guest.html">About</a></li>
+                <li><a href="package_guest.html">Tour Packages</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div class="search-sign">
+                <input type="text" placeholder="Search...">
+                <button>🔍</button>
+                <a href="#" onclick="showSignUpForm()">Sign up</a>
+                <a href="#" onclick="showSignInForm()">Sign in</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>CATEGORIES</h1>
+
+        <div class="category">
+            <img src="package-image/falls.jpg" alt="Falls">
+            <h2>FALLS</h2>
+            <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.</p>
+            <a href="#" class="button">View</a>
+        </div>
+
+        <div class="category">
+            <img src="package-image/caves.webp" alt="Caves">
+            <h2>CAVES</h2>
+            <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.</p>
+            <a href="#" class="button">View</a>
+        </div>
+
+        <div class="category">
+            <img src="package-image/lakes.jpg" alt="Lakes">
+            <h2>LAKES</h2>
+            <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.</p>
+            <a href="#" class="button">View</a>
+        </div>
+
+        <div class="category">
+            <img src="package-image/baywalks.jpg" alt="Baywalks">
+            <h2>BAYWALKS</h2>
+            <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.</p>
+            <a href="#" class="button">View</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" class="bi bi-x"> </a> <!-- X icon -->
+            <a href="#" class="bi bi-facebook"> </a> <!-- Facebook icon -->
+            <a href="#" class="bi bi-youtube"> </a> <!-- YouTube icon -->
+            <a href="#" class="bi bi-linkedin"> </a> <!-- LinkedIn icon -->
+        </div>
+        <p>&copy; 2024 Bislig Tours - All Rights Reserved</p>
+    </footer>
+
+    <!-- Modal for Account Creation Prompt -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Must Create an Account</h2>
+            <p>To view this content, you must first sign in or sign up.</p>
+            <div class="auth-options">
+                <button onclick="showSignUpForm()">Sign Up</button>
+                <button onclick="showSignInForm()">Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign-up Modal -->
+    <div class="modal" id="signUpModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeSignUpModal">&times;</span>
+            <h2>Sign Up</h2>
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
+                </div>
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" id="password" required>
+                
+                <!-- Password guidelines -->
+                <div id="passwordGuidelines">
+                    <p>Password must meet the following criteria:</p>
+                    <ul>
+                        <li id="minLength">At least 8 characters</li>
+                        <li id="uppercase">At least one uppercase letter</li>
+                        <li id="number">At least one number</li>
+                        <li id="specialChar">At least one special character (e.g., @, #, $, etc.)</li>
+                    </ul>
+                </div>
+                
+                <button type="submit">Sign Up</button>
+            </form>
+            <hr>
+            <p>Or sign up using</p>
+            <div class="social-login">
+                <button class="fb"><i class="fab fa-facebook-f"></i></button>
+                <button class="google"><i class="fab fa-google"></i></button>
+            </div>            
+        </div>
+    </div>
+
+    <!-- Sign-in Modal -->
+    <div class="modal" id="signInModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeSignInModal">&times;</span>
+            <h2>Sign In</h2>
+            <form id="signInForm">
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Sign In</button>
+            </form>
+            <hr>
+            <p>Or sign in using</p>
+            <div class="social-login">
+                <button class="fb"><i class="fab fa-facebook-f"></i></button>
+                <button class="google"><i class="fab fa-google"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get modal elements
+        const accountModal = document.getElementById('accountModal');
+        const signUpModal = document.getElementById('signUpModal');
+        const signInModal = document.getElementById('signInModal');
+        
+        // Get close buttons for each modal
+        const closeAccountModal = document.querySelector('#accountModal .close-btn');
+        const closeSignUpModal = document.getElementById('closeSignUpModal');
+        const closeSignInModal = document.getElementById('closeSignInModal');
+        
+        // Get buttons that will open modals
+        const signUpBtn = document.getElementById('signUpBtn');
+        const signInBtn = document.getElementById('signInBtn');
+        
+        // Trigger account creation modal when "View" button is clicked
+        const viewButtons = document.querySelectorAll('.category .button');
+        
+        viewButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                accountModal.style.display = 'block'; // Show account creation modal
+            });
+        });
+        
+        // Show the sign-up modal when "Sign Up" is clicked
+        function showSignUpForm() {
+            accountModal.style.display = 'none'; // Close the account prompt modal
+            signUpModal.style.display = 'block'; // Show sign-up modal
+        }
+        
+        // Show the sign-in modal when "Sign In" is clicked
+        function showSignInForm() {
+            accountModal.style.display = 'none'; // Close the account prompt modal
+            signInModal.style.display = 'block'; // Show sign-in modal
+        }
+        
+        // Close the account creation modal
+        closeAccountModal.addEventListener('click', function() {
+            accountModal.style.display = 'none';
+        });
+        
+        // Close the sign-up modal
+        closeSignUpModal.addEventListener('click', function() {
+            signUpModal.style.display = 'none';
+        });
+        
+        // Close the sign-in modal
+        closeSignInModal.addEventListener('click', function() {
+            signInModal.style.display = 'none';
+        });
+        
+        // Close the modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target == accountModal) {
+                accountModal.style.display = 'none';
+            }
+            if (event.target == signUpModal) {
+                signUpModal.style.display = 'none';
+            }
+            if (event.target == signInModal) {
+                signInModal.style.display = 'none';
+            }
+        });
+    </script>
+        
+    
+</body>
+</html>

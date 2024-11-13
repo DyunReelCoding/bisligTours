@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Bislig - Bislig Tours</title>
+    <link rel="stylesheet" href="./css/about_guest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="background"></div> <!-- Background image container -->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Bislig Tours Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_guest.html">About</a></li>
+                <li><a href="package_guest.html">Tour Packages</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div class="search-sign">
+                <input type="text" placeholder="Search...">
+                <button>🔍</button>
+                <a href="#" id="signUpBtn">Sign up</a>
+                <a href="#" id="signInBtn">Sign in</a>
+            </div>
+        </nav>
+        <!-- Content Section -->
+        <section class="about-section">
+            <div class ="about-title"><h1>ABOUT BISLIG</h1></div>
+            <div class="dropdown-container">
+                <div class="dropdown-item">
+                    <h2>Overview <span class="dropdown-arrow">▼</span></h2>
+                    <div class="dropdown-content">
+                        <p>Discover Bislig’s Best <br>
+                            Tinuy-an Falls: Known as the "Little Niagara Falls of the Philippines" with stunning cascading waters. <br>
+                            Hinayagan Cave: Features beautiful stalactites and a serene interior pool. <br>
+                            Lawigan Beach: Ideal for a peaceful beach getaway. <br>
+                            Sian Falls: A secluded spot for nature lovers. <br><br>
+                             
+                            Getting Here<br>
+                            By Road: Accessible highways from Davao City and Butuan City (nearest airport).<br>
+                            Local Travel: Convenient transport options like tricycles, jeepneys, and vans.<br><br>
+                            
+                            Places to Stay<br>
+                            Hotels: Paper Country Inn<br>
+                            Inns: Shirley’s Pension House<br>
+                            Resorts: Tinuy-an Tourist Inn<br>
+                            Homestays: Authentic, local lodging experiences<br><br>
+                            
+                            Essentials<br>
+                            Food & Dining: Ocean View Park for Filipino cuisine.<br>
+                            Shopping: Local souvenir shops and essentials.<br>
+                            Health Services: Clinics for basic needs.<br><br>
+                            
+                            Experience Bislig<br>
+                            Nature & Adventure: Trekking and swimming at Tinuy-an Falls, exploring Hinayagan Cave, unwinding at the beach.<br>
+                            Culture & Festivities: Celebrate local traditions at the Karawasan Festival, which is celebrated on September 16 to 18, with unique dances and music.</p>
+                    </div>
+                </div>
+                <div class="dropdown-item">
+                    <h2>Travel Options <span class="dropdown-arrow">▼</span></h2>
+                    <div class="dropdown-content">
+                        <p>Getting to Bislig<br><br>
+
+                            By Air<br>
+                            Butuan Airport (Bancasi Airport): 150 km from Bislig; bus or van ride takes 4-5 hours.<br>
+                            Davao City Airport (Francisco Bangoy International Airport): 208 km from Bislig; bus or van ride takes 5-6 hours.<br><br>
+                            
+                            By Land<br>
+                            Buses: Regular service by Bachelor Express and Surigao Bus Company connects Davao City, Butuan City, and other Mindanao areas.<br>
+                            Mangagoy Terminal: The city’s main terminal in its commercial hub.<br>
+                            Flexible Transport: Vans-for-hire and jeepneys from nearby towns for flexible group options.<br>
+                            Private Car: Accessible via the Pan-Philippine Highway (AH26) or Surigao-Davao Coastal Road, offering scenic views.<br><br>
+                            
+                            By Sea<br>
+                            Nearby Ports: Use Nasipit Port (Agusan del Norte) or Surigao Port (Surigao City) for connections to major destinations in the Visayas and Luzon.</p></p>
+                    </div>
+                </div>
+                <div class="dropdown-item">
+                    <h2>Local Transport <span class="dropdown-arrow">▼</span></h2>
+                    <div class="dropdown-content">
+                        <p>Once in Bislig, local transport options include tricycles and motorbikes for hire (habal-habal) to access various tourist spots around the city.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <!-- Footer -->
+     <footer class="footer">
+        <div class="social-links">
+            <a href="#" class="bi bi-x"> </a> <!-- X icon -->
+            <a href="#" class="bi bi-facebook"> </a> <!-- Facebook icon -->
+            <a href="#" class="bi bi-youtube"> </a> <!-- YouTube icon -->
+            <a href="#" class="bi bi-linkedin"> </a> <!-- LinkedIn icon -->
+        </div>
+        <p>&copy; 2024 Bislig Tours - All Rights Reserved</p>
+    </footer>
+
+    <div class="modal" id="signUpModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeSignUpModal">&times;</span>
+            <h2>Sign Up</h2>
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
+                </div>
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" id="password" required>
+                
+                <!-- Password guidelines -->
+                <div id="passwordGuidelines">
+                    <p>Password must meet the following criteria:</p>
+                    <ul>
+                        <li id="minLength">At least 8 characters</li>
+                        <li id="uppercase">At least one uppercase letter</li>
+                        <li id="number">At least one number</li>
+                        <li id="specialChar">At least one special character (e.g., @, #, $, etc.)</li>
+                    </ul>
+                </div>
+                
+                <button type="submit">Sign Up</button>
+            </form>
+            <hr>
+            <p>Or sign up using</p>
+            <div class="social-login">
+                <button class="fb"><i class="fab fa-facebook-f"></i></button>
+                <button class="google"><i class="fab fa-google"></i></button>
+            </div>            
+        </div>
+    </div>
+
+   <!-- Sign-in Modal -->
+<div class="modal" id="signInModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeSignInModal">&times;</span>
+        <h2>Sign In</h2>
+        <form id="signInForm">
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+        </form>
+        <hr>
+        <p>Or sign in using</p>
+        <div class="social-login">
+            <button class="fb"><i class="fab fa-facebook-f"></i></button>
+            <button class="google"><i class="fab fa-google"></i></button>
+        </div>
+    </div>
+</div>
+
+    
+<!-- Verification Modal -->
+<div class="modal verification-modal" id="verificationModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeVerificationModal">&times;</span>
+        <h2>Verify Your Account</h2>
+        <p>Enter the code sent to your email to verify your account.</p>
+        <div class="form-group">
+            <label for="verificationCode">Verification Code</label>
+            <input type="text" id="verificationCode" placeholder="Enter code" required>
+        </div>
+        <button id="confirmVerificationBtn">Confirm</button>
+    </div>
+</div>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/login.js"></script>
+    <script>
+        document.querySelectorAll('.dropdown-item h2').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('expanded');
+            });
+        });
+    </script>
+</body>
+</html>
