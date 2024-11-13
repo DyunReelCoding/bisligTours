@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bislig Tours</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <title>About Bislig - Bislig Tours</title>
+    <link rel="stylesheet" href="./css/about_guest.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+<style>
+    #user-name {
+    color: white; /* Set the user's name color to white */
+    font-size: 16px;
+    font-weight: bold;
+}
+</style>
+
 <body>
+    <!-- Header -->
     <header class="header">
+        <div class="background"></div> <!-- Background image container -->
         <nav class="navbar">
             <div class="logo">
                 <img src="/images/logo.png" alt="Bislig Tours Logo">
@@ -32,15 +42,34 @@
                     <span id="user-name"></span>
                 </div>
             </div>
-            
         </nav>
-        <div class="content">
-            <h1>BISLIG TOURS</h1>
-            <p>Find Your Bliss in Beautiful Bislig!</p>
-            <a href="#" class="explore-button">Explore</a>
-        </div>
+        <!-- Content Section -->
+        <section class="about-section">
+            <h1>ABOUT BISLIG</h1>
+            <div class="dropdown-container">
+                <div class="dropdown-item">
+                    <h2>Overview <span class="dropdown-arrow">▼</span></h2>
+                    <div class="dropdown-content">
+                        <p>Details about the beautiful city of Bislig.</p>
+                    </div>
+                </div>
+                <div class="dropdown-item">
+                    <h2>Travel Options <span class="dropdown-arrow">▼</span></h2>
+                    <div class="dropdown-content">
+                        <p>Information about various travel options to Bislig.</p>
+                    </div>
+                </div>
+                <div class="dropdown-item">
+                    <h2>Local Transport <span class="dropdown-arrow">▼</span></h2>
+                    <div class="dropdown-content">
+                        <p>Details on local transportation within Bislig.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </header>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="social-links">
             <a href="#">ⓧ</a>
@@ -51,6 +80,7 @@
         <p>&copy; 2024 Bislig Tours - All Rights Reserved</p>
     </footer>
 
+    <script src="./js/script.js"></script>
     <script>
         // Retrieve user info from localStorage
         const userName = localStorage.getItem('userName');
@@ -65,6 +95,14 @@
         } else {
             document.getElementById('user-info').style.display = 'none'; // Hide if no user info
         }
+
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-item h2').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('expanded');
+            });
+        });
     </script>
 </body>
 </html>
