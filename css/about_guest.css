@@ -471,10 +471,6 @@ body {
   background: rgba(0, 0, 0, 0.7);
 }
 
-/* Background image styling (optional) */
-.about-section {
-  background: url('/images/your-background-image.jpg') center/cover fixed no-repeat;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
