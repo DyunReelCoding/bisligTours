@@ -177,7 +177,9 @@
         document.querySelectorAll('.dropdown-item h2').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
-                item.classList.toggle('expanded');
+                item.classList.toggle('expanded');  // Toggle the expanded class to show/hide content
+                const arrow = header.querySelector('.dropdown-arrow');
+                arrow.textContent = item.classList.contains('expanded') ? '▲' : '▼'; // Toggle arrow direction
             });
         });
     </script>

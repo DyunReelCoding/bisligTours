@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinuy-an Falls - Bislig Tours</title>
+    <link rel="stylesheet" href="./css/tinuyan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="package-image/logos.png" alt="Bislig Tours Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="login.html">Home</a></li>
+            <li><a href="about_login.html">About</a></li>
+            <li><a href="package_login.html">Tour Packages</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="search-profile">
+            <input type="text" placeholder="Search...">
+            <button>🔍</button>
+            <!-- User info container (top right) -->
+            <div class="user-info" id="user-info">
+                <img id="profilePic" src="" alt="Profile Picture" class="profile-pic">
+                <span id="user-name"></span>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="card">
+            <img src="package-image/falls.jpg" alt="Tinuy-an Falls">
+            <h2>Tinuy-an Falls</h2>
+            <p>
+                Tinuy-an Falls is a majestic multi-tiered waterfall located in Bislig, Surigao del Sur. Standing at 95 meters wide and 55 meters high, it is often called the "Niagara Falls of the Philippines." Its wide curtain of water cascading over three levels is a breathtaking sight, especially in the morning when rainbows often form in the mist. Surrounded by lush greenery, Tinuy-an Falls is a perfect spot for nature lovers, offering opportunities for swimming, bamboo rafting, and photography in a serene, picturesque environment.
+            </p>
+            <button class="book-button">Book</button>
+            <div class="reviews">
+                <h3>Reviews and Ratings</h3>
+                <div class="review-entry">
+                    <span class="reviewer-name">Michael James</span>
+                    <span class="rating">★★★★★</span>
+                </div>
+                <p>Nice place. Very worth your time if you want to chill and unwind.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" class="bi bi-facebook"> </a>
+            <a href="#" class="bi bi-youtube"> </a>
+            <a href="#" class="bi bi-linkedin"> </a>
+        </div>
+        <p>&copy; 2024 Bislig Tours - All Rights Reserved</p>
+    </footer>
+    <script>
+        // Retrieve user info from localStorage
+        const userName = localStorage.getItem('userName');
+        const userProfilePic = localStorage.getItem('userProfilePic');
+
+        // Check if user data exists
+        if (userName && userProfilePic) {
+            // Update DOM with user's info
+            document.getElementById('user-name').textContent = userName;
+            document.getElementById('profilePic').src = userProfilePic;
+            document.getElementById('user-info').style.display = 'flex'; // Show user info section
+        } else {
+            document.getElementById('user-info').style.display = 'none'; // Hide if no user info
+        }
+    </script>
+</body>
+</html>

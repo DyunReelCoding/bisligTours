@@ -7,7 +7,10 @@
 }
 
 body {
-  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100%;  /* Allow height to adjust dynamically */
+  overflow-y: auto;  /* Enable scrolling */
 }
 
 /* Header */
@@ -104,6 +107,7 @@ body {
 .content h1 {
   font-size: 4em;
   letter-spacing: 2px;
+
 }
 
 .content p {
@@ -130,11 +134,14 @@ body {
 /* Footer */
 .footer {
   position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0px;
+  left: 0;
+  width: 100%;
   text-align: center;
   color: #fff;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(3px) !important;
+  padding: 10px 0;
 }
 
 .social-links {
@@ -407,15 +414,22 @@ body {
 .about-section {
   padding: 100px 20px;
   color: white;
+  text-align: center; /* Center-aligns text content */
 }
 
-.about-section .about-title{
+.about-section .about-title {
   font-size: 2em;
   margin-top: -60px;
   margin-bottom: 30px;
   color: #fff;
   font-weight: bold;
-  text-align: center;
+}
+
+.about-section h1 {
+  font-size: 2.5em; /* Adjust title size */
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 /* Dropdown container */
