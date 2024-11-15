@@ -17,6 +17,9 @@ body {
   position: relative;
   color: #fff;
 }
+#minLength, #uppercase, #number, #specialChar{
+  color: black !important;
+}
 
 /* Navbar */
 .navbar {

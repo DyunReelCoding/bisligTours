@@ -9,7 +9,7 @@ document.getElementById('signInForm').addEventListener('submit', function(event)
     if (email === 'user@example.com' && password === 'password123') {
         // Simulate successful login
         const userName = 'John Doe';  // Example user name
-        const userProfilePic = '../images/logo.png';  // Example profile picture path
+        const userProfilePic = '../images/pic.png';  // Example profile picture path
 
         // Store the user info in localStorage (or sessionStorage)
         localStorage.setItem('userName', userName);
