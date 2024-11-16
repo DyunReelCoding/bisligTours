@@ -51,56 +51,53 @@ window.addEventListener('click', (event) => {
 });
 
 // Save user data to .txt file
-async function saveToFile(data) {
+async function saveToFile(userData) {
     try {
-        const fileHandle = await window.showSaveFilePicker({
-            suggestedName: 'user_data.txt',
-            types: [{ description: 'Text Files', accept: { 'text/plain': ['.txt'] } }],
-        });
-        const writableStream = await fileHandle.createWritable();
-        await writableStream.write(data);
-        await writableStream.close();
-        alert("Signup successful! You can now sign in.");
+        const filePath = 'user_data.txt'; // Simulated file path
+        const existingData = localStorage.getItem(filePath) || ''; // Retrieve existing data
+        const newData = existingData + userData; // Append new data
+        localStorage.setItem(filePath, newData); // Save back to storage
+        console.log('Data saved:', newData);
     } catch (error) {
-        console.error("Error saving file:", error);
-        alert("Failed to save signup data.");
+        console.error('Error saving to file:', error);
+        alert('Failed to save user data.');
     }
 }
+
 
 // Read user data from .txt file
 async function readFromFile() {
     try {
-        const [fileHandle] = await window.showOpenFilePicker({
-            types: [{ description: 'Text Files', accept: { 'text/plain': ['.txt'] } }],
-        });
-        const file = await fileHandle.getFile();
-        return await file.text();
+        const filePath = 'user_data.txt'; // Simulated file path
+        const data = localStorage.getItem(filePath); // Retrieve data
+        return data || ''; // Return empty string if no data
     } catch (error) {
-        console.error("Error reading file:", error);
-        alert("Failed to read user data.");
+        console.error('Error reading from file:', error);
+        alert('Failed to read user data.');
         return null;
     }
 }
 
+// Handle the sign-up form submission
 // Handle the sign-up form submission
 const signUpForm = document.querySelector('#signUpModal form');
 signUpForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     // Collect input values
-    const firstName = event.target[0].value;
-    const lastName = event.target[1].value;
-    const email = event.target[2].value;
-    const password = event.target[3].value;
+    const firstName = event.target[0].value.trim();
+    const lastName = event.target[1].value.trim();
+    const email = event.target[2].value.trim();
+    const password = event.target[3].value.trim();
 
     // Close sign-up modal and open verification modal
     signUpModal.style.display = 'none';
     verificationModal.style.display = 'flex';
 
     // Attach the verification process to the "Confirm" button
-    document.getElementById('confirmVerificationBtn').onclick = async function() {
+    document.getElementById('confirmVerificationBtn').onclick = async function () {
         const verificationCode = document.getElementById('verificationCode').value;
-        
+
         if (verificationCode === '1234') {
             // Show success message before saving
             const successMessage = document.createElement('div');
@@ -111,87 +108,73 @@ signUpForm.addEventListener('submit', (event) => {
             document.body.appendChild(successMessage); // Display the success message
 
             // Delay to show success message before saving
-            setTimeout(async function() {
-                // Save user data to localStorage
-                localStorage.setItem('firstName', firstName);
-                localStorage.setItem('lastName', lastName);
-                localStorage.setItem('profilePic', '../images/pic.png'); // You can replace this with the user's actual profile picture path
-
+            setTimeout(async function () {
+                // Save user data
                 const userData = `Email: ${email}, Password: ${password}, First Name: ${firstName}, Last Name: ${lastName}\n`;
                 await saveToFile(userData);
 
-                verificationModal.style.display = 'none'; // Close verification modal
+                // Close verification modal and remove success message
+                verificationModal.style.display = 'none';
+                successMessage.style.display = 'none';
 
-                // Optionally, you can hide the success message after a few seconds
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 3000); // Hide after 3 seconds
+                alert('Signup successful! You can now sign in.');
             }, 1500); // Wait for 1.5 seconds to display success message before saving
         } else {
-            alert("Incorrect verification code.");
+            alert('Incorrect verification code.');
         }
     };
 });
 
 
 
+
 // Handle the sign-in form submission
-const signInForm = document.getElementById('signInForm'); // Correct form selector
+// Handle the sign-in form submission
+const signInForm = document.getElementById('signInForm');
 signInForm.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent form submission that would reload the page
 
-    // Collect input values from the email and password fields
-    const emailInput = document.getElementById('signInEmail');
-    const passwordInput = document.getElementById('signInPassword');
+    // Collect input values
+    const email = document.getElementById('signInEmail').value.trim();
+    const password = document.getElementById('signInPassword').value.trim();
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    // Log the email and password to debug
-    console.log("Entered email:", email, "Length:", email.length);
-    console.log("Entered password:", password, "Length:", password.length);
-
-    // Ensure the password field is not empty
-    if (password === '') {
-        alert("Password cannot be empty!");
+    // Ensure the email and password fields are not empty
+    if (!email || !password) {
+        alert('Email and password cannot be empty!');
         return;
     }
 
-    // Read user data from the file
+    // Retrieve user data
     const fileContent = await readFromFile();
     if (fileContent) {
-        console.log("File content:", fileContent); // Log content to debug
-
-        // Parse the user data from the file content
+        // Parse the user data
         const users = fileContent.split('\n').map(line => {
             const parts = line.split(',');
-            if (parts.length < 2) {
-                return null; // Skip invalid lines
-            }
+            if (parts.length < 2) return null;
+
             const savedEmail = parts[0]?.split(': ')[1]?.trim();
             const savedPassword = parts[1]?.split(': ')[1]?.trim();
 
             return savedEmail && savedPassword ? { email: savedEmail, password: savedPassword } : null;
         }).filter(user => user !== null); // Remove invalid users
 
-        console.log("Parsed users:", users); // Debug parsed users
-
         // Compare entered email and password with the saved data
-        const userExists = users.some(user => {
-            console.log("Comparing:", user.email.toLowerCase(), email.toLowerCase(), user.password, password); // Debug comparison
-            return user.email.toLowerCase() === email.toLowerCase() && user.password === password;
-        });
+        const userExists = users.some(user =>
+            user.email.toLowerCase() === email.toLowerCase() &&
+            user.password === password
+        );
 
         if (userExists) {
-            alert("Sign in successful!");
+            alert('Sign in successful!');
             window.location.href = 'login.html'; // Redirect to login page
         } else {
-            alert("Invalid email or password.");
+            alert('Invalid email or password.');
         }
     } else {
-        alert("Failed to load user data.");
+        alert('No user data found. Please sign up first.');
     }
 });
+
 
 
 // Password Guidelines
