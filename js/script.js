@@ -79,10 +79,14 @@ async function readFromFile() {
 }
 
 // Handle the sign-up form submission
-// Handle the sign-up form submission
 const signUpForm = document.querySelector('#signUpModal form');
 signUpForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+    // Prevent form submission if password guidelines are not met
+    if (!arePasswordGuidelinesMet()) {
+        event.preventDefault(); // Stop form submission
+        alert('Please ensure your password meets all the guidelines.');
+        return;
+    }
 
     // Collect input values
     const firstName = event.target[0].value.trim();
@@ -175,8 +179,6 @@ signInForm.addEventListener('submit', async (event) => {
     }
 });
 
-
-
 // Password Guidelines
 const passwordField = document.getElementById('password');
 const minLength = document.getElementById('minLength');
@@ -184,6 +186,15 @@ const uppercase = document.getElementById('uppercase');
 const number = document.getElementById('number');
 const specialChar = document.getElementById('specialChar');
 
+// Function to check if all password guidelines are met
+function arePasswordGuidelinesMet() {
+    return minLength.style.color === 'green' &&
+           uppercase.style.color === 'green' &&
+           number.style.color === 'green' &&
+           specialChar.style.color === 'green';
+}
+
+// Listen for input in the password field to validate the guidelines
 passwordField.addEventListener('input', function () {
     // Check for at least 8 characters
     minLength.style.color = passwordField.value.length >= 8 ? 'green' : 'red';
