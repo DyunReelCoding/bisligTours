@@ -63,18 +63,23 @@
     </footer>
     <script>
         // Retrieve user info from localStorage
-        const userName = localStorage.getItem('userName');
-        const userProfilePic = localStorage.getItem('userProfilePic');
+        const firstName = localStorage.getItem('firstName');
+        const lastName = localStorage.getItem('lastName');
+        const profilePic = localStorage.getItem('profilePic');
 
         // Check if user data exists
-        if (userName && userProfilePic) {
-            // Update DOM with user's info
-            document.getElementById('user-name').textContent = userName;
-            document.getElementById('profilePic').src = userProfilePic;
-            document.getElementById('user-info').style.display = 'flex'; // Show user info section
-        } else {
-            document.getElementById('user-info').style.display = 'none'; // Hide if no user info
-        }
+        if (firstName && lastName && profilePic) {
+            // Construct the full name
+            const fullName = `${firstName} ${lastName}`;
+
+    // Update DOM with user's info
+    document.getElementById('user-name').textContent = fullName;
+    document.getElementById('profilePic').src = profilePic;
+    document.getElementById('user-info').style.display = 'flex'; // Show user info section
+} else {
+    document.getElementById('user-info').style.display = 'none'; // Hide if no user info
+}
+
     </script>
 </body>
 </html>
